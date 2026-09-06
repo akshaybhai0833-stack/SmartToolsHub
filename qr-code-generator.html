@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>QR Code Generator - SmartToolsHub</title>
+
+<style>
+
+*{
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+margin:0;
+background:#f6f8fc;
+color:#172033;
+}
+
+header{
+background:white;
+padding:18px 7%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+box-shadow:0 2px 15px rgba(0,0,0,.06);
+}
+
+.logo{
+font-size:25px;
+font-weight:bold;
+color:#2563eb;
+}
+
+nav{
+display:flex;
+gap:25px;
+}
+
+nav a{
+text-decoration:none;
+color:#374151;
+font-weight:bold;
+}
+
+main{
+max-width:700px;
+margin:60px auto;
+padding:20px;
+}
+
+.card{
+background:white;
+padding:40px;
+border-radius:22px;
+box-shadow:0 10px 35px rgba(15,23,42,.08);
+text-align:center;
+}
+
+.icon{
+width:75px;
+height:75px;
+margin:auto auto 20px;
+background:#eff5ff;
+border-radius:18px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:38px;
+}
+
+h1{
+margin-bottom:10px;
+}
+
+.subtitle{
+color:#64748b;
+margin-bottom:25px;
+}
+
+textarea{
+width:100%;
+height:120px;
+padding:15px;
+border:1px solid #dbe3ef;
+border-radius:12px;
+font-size:16px;
+resize:none;
+}
+
+button{
+width:100%;
+padding:14px;
+margin-top:20px;
+border:0;
+border-radius:10px;
+background:#2563eb;
+color:white;
+font-weight:bold;
+font-size:16px;
+cursor:pointer;
+}
+
+#qrcode{
+margin:30px auto;
+display:flex;
+justify-content:center;
+}
+
+.download{
+display:none;
+background:#111827;
+}
+
+.back{
+display:block;
+margin-top:25px;
+color:#2563eb;
+text-decoration:none;
+font-weight:bold;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">SmartToolsHub</div>
+
+<nav>
+<a href="index.html">Home</a>
+<a href="index.html#tools">Tools</a>
+<a href="index.html#about">About</a>
+</nav>
+
+</header>
+
+<main>
+
+<div class="card">
+
+<div class="icon">📱</div>
+
+<h1>QR Code Generator</h1>
+
+<p class="subtitle">
+Create QR codes from text, links or URLs.
+</p>
+
+<textarea
+id="qrText"
+placeholder="Enter text or URL..."></textarea>
+
+<button onclick="generateQR()">
+Generate QR Code
+</button>
+
+<div id="qrcode"></div>
+
+<button
+class="download"
+id="downloadBtn"
+onclick="downloadQR()">
+Download QR Code
+</button>
+
+<a class="back" href="index.html">
+← Back to SmartToolsHub
+</a>
+
+</div>
+
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+<script>
+
+function generateQR(){
+
+let text=document.getElementById("qrText").value.trim();
+
+if(!text){
+
+alert("Please enter text or URL.");
+return;
+
+}
+
+let qr=document.getElementById("qrcode");
+
+qr.innerHTML="";
+
+new QRCode(qr,{
+text:text,
+width:200,
+height:200
+});
+
+document.getElementById("downloadBtn")
+.style.display="block";
+
+}
+
+function downloadQR(){
+
+let canvas=document.querySelector("#qrcode canvas");
+
+if(!canvas){
+
+alert("Generate a QR code first.");
+return;
+
+}
+
+let link=document.createElement("a");
+
+link.download="SmartToolsHub-QR.png";
+
+link.href=canvas.toDataURL("image/png");
+
+link.click();
+
+}
+
+</script>
+
+</body>
+</html>

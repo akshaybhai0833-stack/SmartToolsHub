@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>EMI Calculator - SmartToolsHub</title>
+
+<style>
+
+*{
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+margin:0;
+background:#f6f8fc;
+color:#172033;
+}
+
+header{
+background:white;
+padding:18px 7%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+box-shadow:0 2px 15px rgba(0,0,0,.06);
+}
+
+.logo{
+font-size:25px;
+font-weight:bold;
+color:#2563eb;
+}
+
+nav{
+display:flex;
+gap:25px;
+}
+
+nav a{
+text-decoration:none;
+color:#374151;
+font-weight:bold;
+}
+
+main{
+max-width:700px;
+margin:60px auto;
+padding:20px;
+}
+
+.card{
+background:white;
+padding:40px;
+border-radius:22px;
+box-shadow:0 10px 35px rgba(15,23,42,.08);
+}
+
+.icon{
+width:75px;
+height:75px;
+margin:auto auto 20px;
+background:#eff5ff;
+border-radius:18px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:38px;
+}
+
+h1{
+text-align:center;
+margin-bottom:10px;
+}
+
+.subtitle{
+text-align:center;
+color:#64748b;
+margin-bottom:30px;
+}
+
+label{
+display:block;
+font-weight:bold;
+margin:15px 0 8px;
+}
+
+input{
+width:100%;
+padding:14px;
+border:1px solid #dbe3ef;
+border-radius:10px;
+font-size:16px;
+}
+
+button{
+width:100%;
+padding:14px;
+margin-top:25px;
+border:0;
+border-radius:10px;
+background:#2563eb;
+color:white;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.result{
+display:none;
+margin-top:25px;
+padding:25px;
+background:#eff5ff;
+border-radius:15px;
+}
+
+.result p{
+margin:10px 0;
+font-size:17px;
+}
+
+.back{
+display:block;
+text-align:center;
+margin-top:25px;
+text-decoration:none;
+color:#2563eb;
+font-weight:bold;
+}
+
+@media(max-width:600px){
+
+header{
+flex-direction:column;
+gap:15px;
+}
+
+.card{
+padding:25px 20px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">SmartToolsHub</div>
+
+<nav>
+<a href="index.html">Home</a>
+<a href="index.html#tools">Tools</a>
+<a href="index.html#about">About</a>
+</nav>
+
+</header>
+
+<main>
+
+<div class="card">
+
+<div class="icon">💰</div>
+
+<h1>EMI Calculator</h1>
+
+<p class="subtitle">
+Calculate your monthly loan EMI easily.
+</p>
+
+<label>Loan Amount (₹)</label>
+<input type="number" id="amount" placeholder="Enter loan amount">
+
+<label>Interest Rate (% per year)</label>
+<input type="number" id="rate" placeholder="Enter interest rate">
+
+<label>Loan Tenure (Years)</label>
+<input type="number" id="years" placeholder="Enter years">
+
+<button onclick="calculateEMI()">
+Calculate EMI
+</button>
+
+<div class="result" id="result">
+
+<p><strong>Monthly EMI:</strong> ₹<span id="emi"></span></p>
+
+<p><strong>Total Interest:</strong> ₹<span id="interest"></span></p>
+
+<p><strong>Total Payment:</strong> ₹<span id="total"></span></p>
+
+</div>
+
+<a class="back" href="index.html">
+← Back to SmartToolsHub
+</a>
+
+</div>
+
+</main>
+
+<script>
+
+function calculateEMI(){
+
+let P=parseFloat(document.getElementById("amount").value);
+let annualRate=parseFloat(document.getElementById("rate").value);
+let years=parseFloat(document.getElementById("years").value);
+
+if(!P || !annualRate || !years){
+
+alert("Please enter all values.");
+return;
+
+}
+
+let r=annualRate/12/100;
+let n=years*12;
+
+let emi;
+
+if(r===0){
+
+emi=P/n;
+
+}else{
+
+emi=P*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1);
+
+}
+
+let total=emi*n;
+let interest=total-P;
+
+document.getElementById("emi").innerText=
+emi.toFixed(2);
+
+document.getElementById("interest").innerText=
+interest.toFixed(2);
+
+document.getElementById("total").innerText=
+total.toFixed(2);
+
+document.getElementById("result").style.display="block";
+
+}
+
+</script>
+
+</body>
+</html>
