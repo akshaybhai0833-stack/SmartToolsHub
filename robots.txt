@@ -1,4 +1,1 @@
-User-agent: *
-Allow: /
-
-Sitemap: Sitemap: https://akshaybhaiweb.github.io/SmartToolsHub/sitemap.xml
+Sitemap: https://akshaybhaiweb.github.io/SmartToolsHub/sitemap.xml
