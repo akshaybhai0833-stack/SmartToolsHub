@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SmartToolsHub - Free Online Tools</title>
+
+    <meta name="description"
+        content="SmartToolsHub provides free online calculators, PDF tools, image tools, text tools and converters.">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #f6f8fc;
+            color: #172033;
+        }
+
+        /* ================= HEADER ================= */
+
+        header {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.96);
+            padding: 18px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.06);
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: 800;
+            color: #2563eb;
+            letter-spacing: -0.5px;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #374151;
+            font-size: 15px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #2563eb;
+        }
+
+        /* ================= HERO ================= */
+
+        .hero {
+            padding: 90px 20px 80px;
+            text-align: center;
+            background: linear-gradient(135deg, #eef5ff, #ffffff);
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 30px;
+            background: #e0ecff;
+            color: #2563eb;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: 52px;
+            line-height: 1.15;
+            margin-bottom: 18px;
+            color: #111827;
+        }
+
+        .hero h1 span {
+            color: #2563eb;
+        }
+
+        .hero p {
+            max-width: 650px;
+            margin: auto;
+            color: #64748b;
+            font-size: 18px;
+            line-height: 1.7;
+            margin-bottom: 32px;
+        }
+
+        /* ================= SEARCH ================= */
+
+        .search-container {
+            position: relative;
+            max-width: 620px;
+            margin: auto;
+        }
+
+        .search {
+            width: 100%;
+            padding: 17px 22px;
+            border: 1px solid #dbe3ef;
+            border-radius: 14px;
+            font-size: 16px;
+            outline: none;
+            background: white;
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.08);
+            transition: 0.3s;
+        }
+
+        .search:focus {
+            border-color: #2563eb;
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.15);
+        }
+
+        /* ================= TOOLS ================= */
+
+        .tools {
+            max-width: 1200px;
+            margin: auto;
+            padding: 70px 25px;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .section-heading h2 {
+            font-size: 32px;
+            margin-bottom: 10px;
+            color: #111827;
+        }
+
+        .section-heading p {
+            color: #64748b;
+            font-size: 16px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 22px;
+        }
+
+        /* ================= CARDS ================= */
+
+        .card {
+            background: white;
+            padding: 28px 22px;
+            border-radius: 18px;
+            text-align: center;
+            border: 1px solid #e8edf5;
+            box-shadow: 0 8px 25px rgba(15, 23, 42, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
+            border-color: #cddcff;
+        }
+
+        .icon {
+            width: 65px;
+            height: 65px;
+            margin: 0 auto 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #eff5ff;
+            border-radius: 16px;
+            font-size: 32px;
+        }
+
+        .card h3 {
+            font-size: 19px;
+            margin-bottom: 10px;
+            color: #172033;
+        }
+
+        .card p {
+            color: #64748b;
+            font-size: 14px;
+            line-height: 1.6;
+            min-height: 45px;
+            margin-bottom: 18px;
+        }
+
+        /* ================= BUTTON ================= */
+
+        .btn {
+            display: inline-block;
+            padding: 11px 20px;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 700;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #1d4ed8;
+            transform: scale(1.03);
+        }
+
+        /* ================= ABOUT ================= */
+
+        .about-box {
+            max-width: 850px;
+            margin: auto;
+            text-align: center;
+            background: white;
+            padding: 45px 30px;
+            border-radius: 20px;
+            border: 1px solid #e8edf5;
+            box-shadow: 0 8px 25px rgba(15, 23, 42, 0.05);
+        }
+
+        .about-box h2 {
+            font-size: 30px;
+            margin-bottom: 15px;
+        }
+
+        .about-box p {
+            color: #64748b;
+            line-height: 1.8;
+            font-size: 16px;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 35px 20px;
+            margin-top: 30px;
+        }
+
+        footer .footer-logo {
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        footer p {
+            color: #9ca3af;
+            font-size: 14px;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 1000px) {
+
+            .grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .hero h1 {
+                font-size: 44px;
+            }
+        }
+
+        @media (max-width: 750px) {
+
+            header {
+                padding: 16px 5%;
+            }
+
+            nav {
+                gap: 15px;
+            }
+
+            nav a {
+                font-size: 14px;
+            }
+
+            .grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero {
+                padding: 70px 20px;
+            }
+
+            .hero h1 {
+                font-size: 38px;
+            }
+        }
+
+        @media (max-width: 500px) {
+
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav {
+                gap: 18px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tools {
+                padding: 50px 18px;
+            }
+
+            .section-heading h2 {
+                font-size: 27px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+
+    <header>
+
+        <div class="logo">
+            SmartToolsHub
+        </div>
+
+        <nav>
+            <a href="#">Home</a>
+            <a href="#tools">Tools</a>
+            <a href="#about">About</a>
+        </nav>
+
+    </header>
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="hero-badge">
+            ⚡ Free & Easy Online Tools
+        </div>
+
+        <h1>
+            Powerful Tools.<br>
+            <span>Simple Solutions.</span>
+        </h1>
+
+        <p>
+            SmartToolsHub gives you free, fast and easy-to-use
+            online tools for everyday digital tasks.
+        </p>
+
+        <div class="search-container">
+
+            <input
+                type="text"
+                class="search"
+                id="searchBox"
+                placeholder="🔍 Search for a tool..."
+                onkeyup="searchTools()"
+            >
+
+        </div>
+
+    </section>
+
+
+    <!-- TOOLS -->
+
+    <section class="tools" id="tools">
+
+        <div class="section-heading">
+
+            <h2>Our Popular Tools</h2>
+
+            <p>
+                Choose a tool and get your work done quickly.
+            </p>
+
+        </div>
+
+
+        <div class="grid" id="toolGrid">
+
+
+            <!-- AGE -->
+
+            <div class="card">
+
+                <div class="icon">🎂</div>
+
+                <h3>Age Calculator</h3>
+
+                <p>
+                    Calculate your exact age easily.
+                </p>
+
+                <a href="age-calculator.html" class="btn">
+                    Use Tool
+                </a>
+
+            </div>
+
+
+            <!-- EMI -->
+
+            <div class="card">
+
+                <div class="icon">💰</div>
+
+                <h3>EMI Calculator</h3>
+
+                <p>
+                    Calculate your monthly loan EMI.
+                </p>
+
+                <a href="emi-calculator.html" class="btn">
+                    Use Tool
+                </a>
+
+            </div>
+
+
+            <!-- PERCENTAGE -->
+
+            <div class="card">
+
+                <div class="icon">📊</div>
+
+                <h3>Percentage Calculator</h3>
+
+                <p>
+                    Calculate percentages quickly.
+                </p>
+
+                <a href="percentage-calculator.html" class="btn">
+                    Use Tool
+                </a>
+
+            </div>
+
+
+            <!-- BMI -->
+
+            <div class="card">
+
+                <div class="icon">⚖️</div>
+
+                <h3>BMI Calculator</h3>
+
+                <p>
+                    Calculate your BMI easily.
+                </p>
+
+                <a href="bmi-calculator.html" class="btn">
+                    Use Tool
+                </a>
+
+            </div>
+
+
+            <!-- UNIT -->
+
+            <div class="card">
+
+                <div class="icon">🔄</div>
+
+                <h3>Unit Converter</h3>
+
+                <p>
+                    Convert different units instantly.
+                </p>
+
+                <a href="unit-converter.html" class="btn">
+                    Use Tool
+                </a>
+
+            </div>
+
+
+            <!-- WORD -->
+
+            <div class="card">
+
+                <div class="icon">📝</div>
+
+                <h3>Word Counter</h3>
+
+                <p>
+                    Count words and characters easily.
+                </p>
+
+                <a href="word-counter.html" class="btn">
+                    Use Tool
+                </a>
+
+            </div>
+
+
+            <!-- PASSWORD -->
+
+            <div class="card">
+
+                <div class="icon">🔐</div>
+
+                <h3>Password Generator</h3>
+
+                <p>
+                    Generate strong secure passwords.
+                </p>
+
+                <a href="password-generator.html" class="btn">
+                    Use Tool
+                </a>
+
+            </div>
+
+
+            <!-- QR -->
+
+            <div class="card">
+
+                <div class="icon">📱</div>
+
+                <h3>QR Code Generator</h3>
+
+                <p>
+                    Create QR codes from text or URLs.
+                </p>
+
+                <a href="qr-code-generator.html" class="btn">
+                    Use Tool
+                </a>
+
+            </div>
+
+
+            <!-- IMAGE COMPRESSOR -->
+
+            <div class="card">
+
+                <div class="icon">🖼️</div>
+
+                <h3>Image Compressor</h3>
+
+                <p>
+                    Compress images while reducing file size.
+                </p>
+
+                <a href="image-compressor.html" class="btn">
+                    Use Tool
+                </a>
+
+            </div>
+
+
+            <!-- JPG PDF -->
+
+            <div class="card">
+
+                <div class="icon">📄</div>
+
+                <h3>JPG to PDF</h3>
+
+                <p>
+                    Convert JPG images into PDF files.
+                </p>
+
+                <a href="jpg-to-pdf.html" class="btn">
+                    Use Tool
+</a>
+</div>
+</div>
+
+</section>
+
+<section id="about" class="tools">
+    <h2>About SmartToolsHub</h2>
+
+    <p style="text-align:center; max-width:700px; margin:auto; color:#555;">
+        SmartToolsHub is a free online tools website designed to make
+        everyday digital tasks simple and easy.
+    </p>
+</section>
+
+<footer>
+    <p>© 2026 SmartToolsHub. All Rights Reserved.</p>
+
+    <div style="margin-top:12px;">
+        <a href="privacy-policy.html"
+           style="color:#9ca3af; margin:0 8px; text-decoration:none;">
+           Privacy Policy
+        </a>
+
+        <a href="terms.html"
+           style="color:#9ca3af; margin:0 8px; text-decoration:none;">
+           Terms & Conditions
+        </a>
+
+        <a href="disclaimer.html"
+           style="color:#9ca3af; margin:0 8px; text-decoration:none;">
+           Disclaimer
+        </a>
+
+        <a href="contact.html"
+           style="color:#9ca3af; margin:0 8px; text-decoration:none;">
+           Contact Us
+        </a>
+    </div>
+</footer>
+
+<script>
+function searchTools() {
+    let search =
+        document.getElementById("searchBox").value.toLowerCase();
+
+    let cards =
+        document.querySelectorAll(".card");
+
+    cards.forEach(function(card) {
+        let text =
+            card.innerText.toLowerCase();
+
+        if (text.includes(search)) {
+            card.style.display = "block";
+        } else {
+            card.style.display = "none";
+        }
+    });
+}
+</script>
+
+</body>
+</html>

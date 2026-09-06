@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>JPG to PDF - SmartToolsHub</title>
+
+<style>
+
+*{
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+margin:0;
+background:#f6f8fc;
+color:#172033;
+}
+
+header{
+background:white;
+padding:18px 7%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+box-shadow:0 2px 15px rgba(0,0,0,.06);
+}
+
+.logo{
+font-size:25px;
+font-weight:bold;
+color:#2563eb;
+}
+
+nav{
+display:flex;
+gap:25px;
+}
+
+nav a{
+text-decoration:none;
+color:#374151;
+font-weight:bold;
+}
+
+main{
+max-width:800px;
+margin:60px auto;
+padding:20px;
+}
+
+.card{
+background:white;
+padding:40px;
+border-radius:22px;
+box-shadow:0 10px 35px rgba(15,23,42,.08);
+text-align:center;
+}
+
+.icon{
+width:75px;
+height:75px;
+margin:auto auto 20px;
+background:#eff5ff;
+border-radius:18px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:38px;
+}
+
+h1{
+margin-bottom:10px;
+}
+
+.subtitle{
+color:#64748b;
+margin-bottom:25px;
+}
+
+input[type="file"]{
+width:100%;
+padding:15px;
+border:1px dashed #2563eb;
+border-radius:12px;
+background:#f8fbff;
+}
+
+#preview{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:15px;
+margin-top:25px;
+}
+
+.preview-img{
+width:100%;
+height:160px;
+object-fit:cover;
+border-radius:12px;
+border:1px solid #e5e7eb;
+}
+
+button{
+width:100%;
+padding:14px;
+margin-top:25px;
+border:0;
+border-radius:10px;
+background:#2563eb;
+color:white;
+font-weight:bold;
+font-size:16px;
+cursor:pointer;
+}
+
+.back{
+display:block;
+margin-top:25px;
+color:#2563eb;
+text-decoration:none;
+font-weight:bold;
+}
+
+@media(max-width:600px){
+
+header{
+flex-direction:column;
+gap:15px;
+}
+
+.card{
+padding:25px 20px;
+}
+
+#preview{
+grid-template-columns:repeat(2,1fr);
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">SmartToolsHub</div>
+
+<nav>
+<a href="index.html">Home</a>
+<a href="index.html#tools">Tools</a>
+<a href="index.html#about">About</a>
+</nav>
+
+</header>
+
+<main>
+
+<div class="card">
+
+<div class="icon">📄</div>
+
+<h1>JPG to PDF</h1>
+
+<p class="subtitle">
+Convert multiple JPG or PNG images into one PDF.
+</p>
+
+<input
+type="file"
+id="images"
+accept="image/jpeg,image/png"
+multiple
+onchange="showImages()">
+
+<div id="preview"></div>
+
+<button onclick="createPDF()">
+Convert to PDF
+</button>
+
+<a class="back" href="index.html">
+← Back to SmartToolsHub
+</a>
+
+</div>
+
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<script>
+
+function showImages(){
+
+let files=document.getElementById("images").files;
+let preview=document.getElementById("preview");
+
+preview.innerHTML="";
+
+for(let file of files){
+
+let img=document.createElement("img");
+
+img.className="preview-img";
+
+img.src=URL.createObjectURL(file);
+
+preview.appendChild(img);
+
+}
+
+}
+
+async function createPDF(){
+
+let files=document.getElementById("images").files;
+
+if(files.length===0){
+
+alert("Please select at least one image.");
+return;
+
+}
+
+const {jsPDF}=window.jspdf;
+
+let pdf=new jsPDF("p","mm","a4");
+
+for(let i=0;i<files.length;i++){
+
+let file=files[i];
+
+let data=await readFile(file);
+
+let img=await loadImage(data);
+
+let pageWidth=210;
+let pageHeight=297;
+
+let ratio=Math.min(
+pageWidth/img.width,
+pageHeight/img.height
+);
+
+let width=img.width*ratio;
+let height=img.height*ratio;
+
+let x=(pageWidth-width)/2;
+let y=(pageHeight-height)/2;
+
+if(i>0){
+pdf.addPage();
+}
+
+pdf.addImage(
+img,
+"JPEG",
+x,
+y,
+width,
+height
+);
+
+}
+
+pdf.save("SmartToolsHub-images.pdf");
+
+}
+
+function readFile(file){
+
+return new Promise(function(resolve,reject){
+
+let reader=new FileReader();
+
+reader.onload=()=>resolve(reader.result);
+
+reader.onerror=reject;
+
+reader.readAsDataURL(file);
+
+});
+
+}
+
+function loadImage(src){
+
+return new Promise(function(resolve,reject){
+
+let img=new Image();
+
+img.onload=()=>resolve(img);
+
+img.onerror=reject;
+
+img.src=src;
+
+});
+
+}
+
+</script>
+
+</body>
+</html>

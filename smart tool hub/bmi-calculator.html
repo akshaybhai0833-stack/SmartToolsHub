@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>BMI Calculator - SmartToolsHub</title>
+
+<style>
+
+*{
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+margin:0;
+background:#f6f8fc;
+color:#172033;
+}
+
+header{
+background:white;
+padding:18px 7%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+box-shadow:0 2px 15px rgba(0,0,0,.06);
+}
+
+.logo{
+font-size:25px;
+font-weight:bold;
+color:#2563eb;
+}
+
+nav{
+display:flex;
+gap:25px;
+}
+
+nav a{
+text-decoration:none;
+color:#374151;
+font-weight:bold;
+}
+
+main{
+max-width:700px;
+margin:60px auto;
+padding:20px;
+}
+
+.card{
+background:white;
+padding:40px;
+border-radius:22px;
+box-shadow:0 10px 35px rgba(15,23,42,.08);
+}
+
+.icon{
+width:75px;
+height:75px;
+margin:auto auto 20px;
+background:#eff5ff;
+border-radius:18px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:38px;
+}
+
+h1{
+text-align:center;
+margin-bottom:10px;
+}
+
+.subtitle{
+text-align:center;
+color:#64748b;
+margin-bottom:30px;
+}
+
+label{
+display:block;
+font-weight:bold;
+margin:15px 0 8px;
+}
+
+input{
+width:100%;
+padding:14px;
+border:1px solid #dbe3ef;
+border-radius:10px;
+font-size:16px;
+}
+
+button{
+width:100%;
+padding:14px;
+margin-top:25px;
+border:0;
+border-radius:10px;
+background:#2563eb;
+color:white;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.result{
+display:none;
+margin-top:25px;
+padding:25px;
+background:#eff5ff;
+border-radius:15px;
+text-align:center;
+}
+
+.result h2{
+color:#2563eb;
+}
+
+.back{
+display:block;
+text-align:center;
+margin-top:25px;
+color:#2563eb;
+text-decoration:none;
+font-weight:bold;
+}
+
+@media(max-width:600px){
+
+header{
+flex-direction:column;
+gap:15px;
+}
+
+.card{
+padding:25px 20px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">SmartToolsHub</div>
+
+<nav>
+<a href="index.html">Home</a>
+<a href="index.html#tools">Tools</a>
+<a href="index.html#about">About</a>
+</nav>
+
+</header>
+
+<main>
+
+<div class="card">
+
+<div class="icon">⚖️</div>
+
+<h1>BMI Calculator</h1>
+
+<p class="subtitle">
+Calculate your Body Mass Index.
+</p>
+
+<label>Weight (kg)</label>
+<input type="number" id="weight" placeholder="Example: 70">
+
+<label>Height (cm)</label>
+<input type="number" id="height" placeholder="Example: 175">
+
+<button onclick="calculateBMI()">
+Calculate BMI
+</button>
+
+<div class="result" id="result">
+
+<h2 id="bmiValue"></h2>
+
+<p id="category"></p>
+
+</div>
+
+<a class="back" href="index.html">
+← Back to SmartToolsHub
+</a>
+
+</div>
+
+</main>
+
+<script>
+
+function calculateBMI(){
+
+let weight=parseFloat(document.getElementById("weight").value);
+let height=parseFloat(document.getElementById("height").value);
+
+if(!weight||!height){
+
+alert("Please enter weight and height.");
+return;
+
+}
+
+let heightM=height/100;
+let bmi=weight/(heightM*heightM);
+
+let category;
+
+if(bmi<18.5){
+
+category="Underweight";
+
+}else if(bmi<25){
+
+category="Normal weight";
+
+}else if(bmi<30){
+
+category="Overweight";
+
+}else{
+
+category="Obesity";
+
+}
+
+document.getElementById("bmiValue").innerText=
+"BMI: "+bmi.toFixed(2);
+
+document.getElementById("category").innerText=
+"Category: "+category;
+
+document.getElementById("result").style.display="block";
+
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>Word Counter - SmartToolsHub</title>
+
+<style>
+
+*{
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+margin:0;
+background:#f6f8fc;
+color:#172033;
+}
+
+header{
+background:white;
+padding:18px 7%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+box-shadow:0 2px 15px rgba(0,0,0,.06);
+}
+
+.logo{
+font-size:25px;
+font-weight:bold;
+color:#2563eb;
+}
+
+nav{
+display:flex;
+gap:25px;
+}
+
+nav a{
+text-decoration:none;
+color:#374151;
+font-weight:bold;
+}
+
+main{
+max-width:850px;
+margin:60px auto;
+padding:20px;
+}
+
+.card{
+background:white;
+padding:40px;
+border-radius:22px;
+box-shadow:0 10px 35px rgba(15,23,42,.08);
+}
+
+.icon{
+width:75px;
+height:75px;
+margin:auto auto 20px;
+background:#eff5ff;
+border-radius:18px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:38px;
+}
+
+h1{
+text-align:center;
+}
+
+.subtitle{
+text-align:center;
+color:#64748b;
+margin-bottom:25px;
+}
+
+textarea{
+width:100%;
+height:250px;
+padding:15px;
+border:1px solid #dbe3ef;
+border-radius:12px;
+resize:vertical;
+font-size:16px;
+outline:none;
+}
+
+.stats{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:12px;
+margin-top:20px;
+}
+
+.stat{
+background:#eff5ff;
+padding:18px 10px;
+border-radius:12px;
+text-align:center;
+}
+
+.stat strong{
+display:block;
+font-size:24px;
+color:#2563eb;
+margin-bottom:5px;
+}
+
+button{
+margin-top:20px;
+padding:12px 25px;
+border:0;
+border-radius:10px;
+background:#2563eb;
+color:white;
+font-weight:bold;
+cursor:pointer;
+}
+
+.back{
+display:block;
+text-align:center;
+margin-top:25px;
+color:#2563eb;
+text-decoration:none;
+font-weight:bold;
+}
+
+@media(max-width:600px){
+
+header{
+flex-direction:column;
+gap:15px;
+}
+
+.card{
+padding:25px 20px;
+}
+
+.stats{
+grid-template-columns:repeat(2,1fr);
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">SmartToolsHub</div>
+
+<nav>
+<a href="index.html">Home</a>
+<a href="index.html#tools">Tools</a>
+<a href="index.html#about">About</a>
+</nav>
+
+</header>
+
+<main>
+
+<div class="card">
+
+<div class="icon">📝</div>
+
+<h1>Word Counter</h1>
+
+<p class="subtitle">
+Count words, characters and sentences instantly.
+</p>
+
+<textarea id="text"
+placeholder="Type or paste your text here..."
+oninput="countText()"></textarea>
+
+<div class="stats">
+
+<div class="stat">
+<strong id="words">0</strong>
+Words
+</div>
+
+<div class="stat">
+<strong id="characters">0</strong>
+Characters
+</div>
+
+<div class="stat">
+<strong id="spaces">0</strong>
+No Spaces
+</div>
+
+<div class="stat">
+<strong id="sentences">0</strong>
+Sentences
+</div>
+
+</div>
+
+<button onclick="clearText()">
+Clear
+</button>
+
+<a class="back" href="index.html">
+← Back to SmartToolsHub
+</a>
+
+</div>
+
+</main>
+
+<script>
+
+function countText(){
+
+let text=document.getElementById("text").value;
+
+let words=text.trim()
+? text.trim().split(/\s+/).length
+:0;
+
+let characters=text.length;
+
+let noSpaces=text.replace(/\s/g,"").length;
+
+let sentences=text.trim()
+? text.split(/[.!?]+/)
+.filter(s=>s.trim().length>0).length
+:0;
+
+document.getElementById("words").innerText=words;
+document.getElementById("characters").innerText=characters;
+document.getElementById("spaces").innerText=noSpaces;
+document.getElementById("sentences").innerText=sentences;
+
+}
+
+function clearText(){
+
+document.getElementById("text").value="";
+countText();
+
+}
+
+</script>
+
+</body>
+</html>

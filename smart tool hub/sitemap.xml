@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+    <url>
+        <loc>https://yourdomain.com/</loc>
+    </url>
+
+    <url>
+        <loc>https://yourdomain.com/about.html</loc>
+    </url>
+
+    <url>
+        <loc>https://yourdomain.com/contact.html</loc>
+    </url>
+
+    <url>
+        <loc>https://yourdomain.com/privacy-policy.html</loc>
+    </url>
+
+    <url>
+        <loc>https://yourdomain.com/terms.html</loc>
+    </url>
+
+    <url>
+        <loc>https://yourdomain.com/disclaimer.html</loc>
+    </url>
+
+    <url>
+        <loc>https://yourdomain.com/age-calculator.html</loc>
+    </url>
+
+    <url>
+        <loc>https://yourdomain.com/emi-calculator.html</loc>
+    </url>
+
+    <url>
+        <loc>https://yourdomain.com/percentage-calculator.html</loc>
+    </url>
+
+    <url>
+        <loc>https://yourdomain.com/bmi-calculator.html</loc>
+    </url>
+
+    <url>
+        <loc>https://yourdomain.com/unit-converter.html</loc>
+    </url>
+
+    <url>
+        <loc>https://yourdomain.com/word-counter.html</loc>
+    </url>
+
+    <url>
+        <loc>https://yourdomain.com/password-generator.html</loc>
+    </url>
+
+    <url>
+        <loc>https://yourdomain.com/qr-code-generator.html</loc>
+    </url>
+
+    <url>
+        <loc>https://yourdomain.com/image-compressor.html</loc>
+    </url>
+
+    <url>
+        <loc>https://yourdomain.com/jpg-to-pdf.html</loc>
+    </url>
+
+</urlset>
